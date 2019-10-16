@@ -1,0 +1,104 @@
+html{
+<head>
+  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
+  <script src="js/progressive-controls.js"></script>
+</head>
+<body>
+    <a-scene>
+    <!--> Sets up the skeleton of the scene <-->
+    <a-plane position="0 0 0" rotation="-90 0 0" width="4" height="800" color="#4090EE"></a-plane>
+    <a-plane src="Images/Fall%20Leaves.jpg" position="0 -1 0" rotation="-90 0 0" width="800" height="800" repeat="50 50"></a-plane>
+    <a-sky src="Images/Clouds2.jpg"></a-sky>
+    <a-assets>
+    <a-asset-item id="lamp" src="Models/Streetlight.gltf"></a-asset-item>
+    <a-asset-item id="tree" src="Models/Tree.gltf"></a-asset-item>
+    <a-asset-item id="bench" src="Models/Bench.gltf"></a-asset-item>
+    <a-asset-item id="girl" src="Models/Girl_In_Yellow.gltf"></a-asset-item>
+    <a-asset-item id="umbrella" src="Models/Umbrella.gltf"></a-asset-item>
+    <a-asset-item id="leaves" src="Models/Leaves.gltf"></a-asset-item>
+    <a-asset-item id="bus" src="Models/Bus.gltf"></a-asset-item>
+    <a-asset-item id="leaf" src="Models/Leaf.gltf"></a-asset-item>
+
+    </a-assets>
+        
+    <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+        
+    <a-sound src="src: url(wind.mp3)" autoplay="true" loop="true" volume="2" position="0 0 0"></a-sound>
+        
+
+    <!--> Creates the street lamps <-->
+    <a-entity gltf-model="#lamp" position="-3 0 -5" scale="17 17 17" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#lamp" position="6 0 -4" scale="17 20 17" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#lamp" position="6 0 -11" scale="17 25 17" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#lamp" position="4 0 -16" scale="17 17 17" rotation="0 0 0"></a-entity>
+        
+    <!--> Creates the tree lamps <-->
+    <a-entity gltf-model="#tree" position="-3 0 -3" scale="9 9 9" rotation="0 -30 0"></a-entity>
+    <a-entity gltf-model="#tree" position="-4 0 -12" scale="15 21 15" rotation="0 23 0"></a-entity>
+    <a-entity gltf-model="#tree" position="7 0 -7" scale="15 21 15" rotation="0 23 0"></a-entity>
+    <a-entity gltf-model="#tree" position="9 0 -12" scale="15 21 15" rotation="0 23 0"></a-entity>
+    <a-entity gltf-model="#tree" position="6 0 -16" scale="15 15 15" rotation="0 23 0"></a-entity>
+    <a-entity gltf-model="#tree" position="5 0 -25" scale="10 12 10" rotation="0 23 0"></a-entity>
+    
+    <!--> Creates the bench <-->
+    <a-entity gltf-model="#bench" position="4 0 -5" scale="21 21 21" rotation="0 -90 0"></a-entity>
+        
+    <!--> Creates the girls <-->
+    <a-entity gltf-model="#girl" position="0.5 0 -5" scale="19 21 19" rotation="0 -90 0" animation="property: position; to: 0.5 0 -300; dur: 400000"></a-entity>
+    <a-entity gltf-model="#girl" position="-0.5 0 -5" scale="19 21 19" rotation="0 -90 0" animation="property: position; to: -0.5 0 -300; dur: 400000"></a-entity>
+        
+    <!--> Creates the umbrella <-->
+    <a-entity gltf-model="#umbrella" position="-0.259 1. -6" scale="50 50 50" rotation="0 0 0" animation="property: position; to: 0 0 -300; dur: 400000"></a-entity>
+        
+    <!--> Creates the leaves <-->
+    <a-entity gltf-model="#leaves" position="-4.5 5 -7" scale="50 50 50" rotation="0 0 0" animation="property: rotation; to: 0 15 0; dur: 400; loop: true; dir: alternate;"></a-entity>
+    <a-entity gltf-model="#leaves" position="8 5 -5" scale="50 50 50" rotation="20 80 20" animation="property: rotation; delay: 150; to: 20 95 20; dur: 400; loop: true; dir: alternate;"></a-entity>
+    <a-entity gltf-model="#leaves" position="8 7 -14" scale="50 50 50" rotation="20 80 20" animation="property: rotation; to: 20 95 20; dur: 400; loop: true; dir: alternate;"></a-entity>
+    <a-entity gltf-model="#leaves" position="7 6 -26" scale="50 50 50" rotation="20 130 20" animation="property: rotation; delay: 940; to: 20 135 20; dur: 400; loop: true; dir: alternate;"></a-entity>
+    <a-entity gltf-model="#leaves" position="-7 -2 -1" scale="100 100 100" rotation="20 80 20" animation="property: rotation; delay: 340; to: 20 85 20; dur: 400; loop: true; dir: alternate;"></a-entity>
+    <a-entity gltf-model="#leaves" position="7 -2 3" scale="100 100 100" rotation="-20 0 -20" animation="property: rotation; delay: 1000; to: -20 5 -20; dur: 400; loop: true; dir: alternate;"></a-entity>
+    
+    <!--> Falling leaves <-->
+    <a-entity gltf-model="#leaf" position="-4 4.5 -7" scale="20 20 20" rotation="0 90 0" animation="property: position; to: 15 -4.5 -6; dur: 3000; loop: true"></a-entity>
+    <a-entity gltf-model="#leaf" position="-4 5 -6.75" scale="20 20 20" rotation="0 90 0" animation="property: position; delay: 1000; to: 15 -4 -5.5; dur: 4000; loop: true"></a-entity>
+    <a-entity gltf-model="#leaf" position="-4 5.5 -6.5" scale="20 20 20" rotation="0 90 0" animation="property: position; delay: 2000; to: 15 -3.5 -5; dur: 4000; loop: true"></a-entity>
+    <a-entity gltf-model="#leaf" position="6.25 8 -13" scale="20 20 20" rotation="0 90 0" animation="property: position; delay: 1000; to: 18 -4 -13; dur: 4000; loop: true"></a-entity>
+    <a-entity gltf-model="#leaf" position="6.25 7 -14" scale="20 20 20" rotation="0 90 0" animation="property: position; delay: 2000; to: 18 -3.5 -14; dur: 4000; loop: true"></a-entity>
+        
+    <!--> Creates the ripples in the water <-->
+    <a-plane position="1 0.01 -2" width="2" height="0.25" rotation="-90 0 0" color="#B9C24E" opacity="1" animation="property: opacity; to: 0; dur: 2000; dir: alternate; loop: true"></a-plane>
+    <a-plane position="-1 0.01 -4" width="2" height="0.25" rotation="-90 0 0" color="#B0D391" opacity="0" animation="property: opacity; to: 1; dur: 2000; dir: alternate; loop: true"></a-plane>
+    <a-plane position="-0.5 0.01 -3" width="2.8" height="0.25" rotation="-90 0 0" color="#498CC4" opacity="0" animation="property: opacity; to: 1; dur: 2000; dir: alternate; loop: true"></a-plane>
+    <a-plane position="0.5 0.01 -5" width="2.8" height="0.25" rotation="-90 0 0" color="#498CC4" opacity="1" animation="property: opacity; to: 0; dur: 2000; dir: alternate; loop: true"></a-plane>
+    <a-plane position="0.5 0.01 -2.5" width="3" height="0.25" rotation="-90 0 0" color="#375A71" opacity="1" animation="property: opacity; to: 0; dur: 2000; dir: alternate; loop: true"></a-plane>
+    <a-plane position="-0.5 0.01 -3.5" width="3" height="0.25" rotation="-90 0 0" color="#375A71" opacity="0" animation="property: opacity; to: 1; dur: 2000; dir: alternate; loop: true"></a-plane>
+        
+    <a-entity light="type: ambient; color: #BBB"></a-entity>
+    <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+    <a-entity light="type: point; intensity: 1; distance: 25; decay: 5" position="-2.5 9 -4"></a-entity>
+    <a-entity light="type: point; intensity: 1; distance: 25; decay: 5" position="4 12 -4"></a-entity>
+        
+    <!--> Creates the bus, click on it and it moves! <-->
+    <a-entity gltf-model="#bus" position="-7 -0 -7" scale="50 50 50" rotation="0 0 0" animation__mouseClick="property: object3D.position.z; to: -300; startEvents: click; dur: 50000; easing: linear">
+    </a-entity>
+        
+    <a-entity progressive-controls position="0 0 0"></a-entity>
+    
+    <!--> Grab your own umbrella! <-->
+    <a-entity  grabbable
+               gltf-model="#umbrella"
+               position="1 1 -2"
+               scale="50 50 50"
+               sound="src: url(wind.mp3); on: click">
+    </a-entity>
+        
+    <a-plane src="Images/AFrame%20Art2.jpg" position="0 2.5 5" rotation="0 180 0" width="5" height="4"></a-plane>
+    <a-plane src="Images/AFrame%20Art2.jpg" position="0 2.5 5.1" rotation="0 0 0" width="5" height="4"></a-plane>
+        
+    <a-plane src="Images/AFrame%20Instructions.jpg" position="0 0.5 -2" rotation="-20 0 0" width="1" height=".3"></a-plane>
+        
+    </a-scene>
+</body>
+}
